@@ -15,18 +15,18 @@ def calc_recv_timestamp(recv_time_stamp: list, counter: list) -> list:
     return counter
 
 
-def event(pid: int, counter: list):
+def event(pid: int, counter: list) -> list:
     counter[pid] += 1
     return counter
 
 
-def send_message(pipe, pid: int, counter: list):
+def send_message(pipe, pid: int, counter: list) -> list:
     counter[pid] += 1
     pipe.send(('Empty shell', counter))
     return counter
 
 
-def recv_message(pipe, pid: int, counter: list):
+def recv_message(pipe, pid: int, counter: list) -> list:
     counter[pid] += 1
     message, timestamp = pipe.recv()
     counter = calc_recv_timestamp(timestamp, counter)
